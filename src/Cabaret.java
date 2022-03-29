@@ -31,11 +31,11 @@ public class Cabaret
         return false;
     }
 
-    public boolean removeFerformer(Performer performer)
+    public boolean removePerformer(Performer performer)
     {
         if (performers.indexOf(performer) != -1)
         {
-            performers.remove(performers.indexOf(performer);
+            performers.remove(performers.indexOf(performer));
             return true;
         }
         return false;
@@ -75,9 +75,28 @@ public class Cabaret
 
             if (performer instanceof Comedian)
             {
-                
+                Comedian comedian = (Comedian) performer;
+                comedian.rehearse(false);
             }
+            else
+            {
+                performer.rehearse();
+            }
+        }
+    }
 
+    public void cabaretShow()
+    {
+        for (Performer performer : performers)
+        {
+            System.out.println("Welcome to the cabaret! Next act up... " + performer.getName());
+
+            if (performer instanceof Dancer)
+            {
+                Dancer dancer = (Dancer) performer;
+                dancer.pirouette(2);
+            }
+            performer.perform();
         }
     }
 
